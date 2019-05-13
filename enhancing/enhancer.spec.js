@@ -32,3 +32,50 @@ describe('repair', () => {
     expect(item.enhancement).toBe(20);
   })
 });
+
+describe('fail', () => {
+  it('enhancement < 15', () => {
+    const item = {
+      durability: 75,
+      name: "test",
+      enhancement: 10
+    };
+    const newItem = enhancer.fail(item);
+    expect(newItem.durability).toBe(70);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(10);
+  });
+  it('enhancement = 15', () => {
+    const item = {
+      durability: 75,
+      name: "test",
+      enhancement: 15
+    };
+    const newItem = enhancer.fail(item);
+    expect(newItem.durability).toBe(65);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(15);
+  });
+  it('enhancement > 16', () => {
+    const item = {
+      durability: 75,
+      name: "test",
+      enhancement: 17
+    };
+    const newItem = enhancer.fail(item);
+    expect(newItem.durability).toBe(65);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(16);
+  });
+  it('min durability 0', () => {
+    const item = {
+      durability: 1,
+      name: "test",
+      enhancement: 14
+    };
+    const newItem = enhancer.fail(item);
+    expect(newItem.durability).toBe(0);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(14);
+  });
+});
