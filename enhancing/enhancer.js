@@ -6,7 +6,9 @@ module.exports = {
 };
 
 function succeed(item) {
-  return { ...item };
+  const newItem = { ...item };
+  newItem.enhancement = Math.min(newItem.enhancement+1, 20);
+  return newItem;
 }
 
 function fail(item) {

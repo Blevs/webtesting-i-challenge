@@ -33,6 +33,31 @@ describe('repair', () => {
   })
 });
 
+describe('succeed', () => {
+  it('increase enhancement', () => {
+    const item = {
+      durability: 75,
+      name: "test",
+      enhancement: 15
+    };
+    const newItem = enhancer.succeed(item);
+    expect(newItem.durability).toBe(75);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(16);
+  });
+  it('max enhancement 20', () => {
+    const item = {
+      durability: 75,
+      name: "test",
+      enhancement: 20
+    };
+    const newItem = enhancer.succeed(item);
+    expect(newItem.durability).toBe(75);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(20);
+  });
+});
+
 describe('fail', () => {
   it('enhancement < 15', () => {
     const item = {
