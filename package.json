@@ -1,0 +1,15 @@
+{
+  "name": "webtesting-i-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Blevs/webtesting-i-challenge.git",
+  "author": "Henry Blevins <heblevi@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^24.8.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watchAll"
+  }
+}
