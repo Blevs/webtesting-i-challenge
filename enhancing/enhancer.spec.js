@@ -104,3 +104,39 @@ describe('fail', () => {
     expect(newItem.enhancement).toBe(14);
   });
 });
+
+describe('get', () => {
+  it('enancement 0 do nothing', () => {
+    const item = {
+      durability: 1,
+      name: "test",
+      enhancement: 0
+    };
+    const newItem = enhancer.get(item);
+    expect(newItem.durability).toBe(1);
+    expect(newItem.name).toBe("test");
+    expect(newItem.enhancement).toBe(0);
+  });
+  it('add enancement to name', () => {
+    const item = {
+      durability: 1,
+      name: "test",
+      enhancement: 15
+    };
+    const newItem = enhancer.get(item);
+    expect(newItem.durability).toBe(1);
+    expect(newItem.name).toBe("[+15] test");
+    expect(newItem.enhancement).toBe(15);
+  });
+  it('overwrite old enchantment', () => {
+    const item = {
+      durability: 1,
+      name: "[+14] test",
+      enhancement: 15
+    };
+    const newItem = enhancer.get(item);
+    expect(newItem.durability).toBe(1);
+    expect(newItem.name).toBe("[+15] test");
+    expect(newItem.enhancement).toBe(15);
+  });
+});
